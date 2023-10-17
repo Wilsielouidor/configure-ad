@@ -183,24 +183,44 @@ Check back at Client-1 to see the ping succeed
 <p>
 <img width="1440" alt="Screen Shot 2023-10-17 at 3 26 18 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/ec65c9e2-942d-4824-a88f-9c4672088fe7">
 </p>
+
+<p>
+ <img width="1440" alt="Screen Shot 2023-10-17 at 4 40 01 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/bfbafd59-a165-4f17-b8a5-131bf4611032">
+</p>
+
 <p>
   <ul>
 <li>From the Azure Portal, set Client-1’s DNS settings to the DC’s Private IP address</li>
   <ul>
 <li>Go to client-1</li>
 <li>Click Network settings on the left side</li>
-<li> CLick the name of the Network Interface</li>
+<li> Click the name of the Network Interface</li>
 <li>On the left click DNS server</li>
 <li>Click custom and type in DC-1’s private IP Address (which is 10.0.0.4 in this case)-> click save</li>
   </ul>
+   <p> <img width="1162" alt="Screen Shot 2023-10-17 at 4 41 45 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/82886361-4848-443e-ab76-84e115c31bfe">
+</p>
+   <ul>
 <li>From the Azure Portal, restart Client-1</li>
+   </ul>
 </ul>
   </ul>
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="1439" alt="Screen Shot 2023-10-17 at 5 04 17 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/7067fd2a-0bde-4ebb-bbf2-a735a02962fb">
+</p>
+
+<p>
+ <img width="1433" alt="Screen Shot 2023-10-17 at 5 17 57 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/0c1ecf24-4dcb-471c-9947-6444688ab19d">
+</p>
+
+<p><img width="1440" alt="Screen Shot 2023-10-17 at 5 20 09 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/448e70cb-3017-4447-a18b-9908d1b24fd5">
+</p>
+
+<p>
+ <img width="1440" alt="Screen Shot 2023-10-17 at 5 21 29 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/e40a2ce3-edaa-43e2-8534-55c77ed83098">
 </p>
 <p>
   <ul>
@@ -220,7 +240,14 @@ Check back at Client-1 to see the ping succeed
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+ <ul>
+<li>Log into Client-1 as mateo_admin@wilsiepm.com and open system properties</li>
+ <li>Click “Remote Desktop”</li>
+<li>Select users that can remotely access this PC</li>
+<li>Click Add-> type in domain users-> check name</li>
+<li>Allow “domain users” access to remote desktop</li>
+<li>You can now log into Client-1 as a normal, non-administrative user now</li> 
+ </ul>
 </p>
 <br />
 
