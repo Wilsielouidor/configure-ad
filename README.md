@@ -27,14 +27,14 @@ This tutorial outlines the implementation of on-premises Active Directory within
 - Setup Resources in Azure 
 - Confirm connection between the Client and Domain Controller 
 - Install Active Directory 
-- Create an Admin and Normal User Account in AD
+- Create Organizational Units and and Admin User Account
 - Join Client-1 to your domain (mydomain.com)
 - Setup Remote Desktop for non-administrative users on Client-1
 - Create a bunch of additional users and attempt to log into client-1 with one of the users
 
 <h2>Deployment and Configuration Steps</h2>
 <h3> Setup Resources in Azure</h3>
-- Create Domain Controller VM (which would include on-premises Active Directory) 
+<h4>Create Domain Controller VM (which would include on-premises Active Directory)</h4>
 
 
 <p>
@@ -42,7 +42,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 </p>
 <p>
-First create a Virtual Machine that will be the Domain Controller. Name it DC-1 (with the image as Windows Server 2022/3-2 vcpus storage) Create a resource group while making virtual machine. 
+First create a Virtual Machine that will be the Domain Controller. Name it DC-1 (with the image as Windows Server 2022/3-2 vcpus storage) Create a resource group while making virtual machine. Under Adminstrator account create a username and password that will remmember. 
 </p>
 <br />
 
@@ -54,7 +54,7 @@ This is the Vnet that has been automatically created while making the DC-1 Virtu
 </p>
 <br />
 
-- Create Client-1 VM
+<h4>Create Client-1 VM</h4>
 <p>
 <img width="1435" alt="Screen Shot 2023-10-16 at 9 47 18 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/0bd1498e-1ecd-494a-a3e0-0779dd164de8">
 </p>
@@ -63,11 +63,13 @@ Create Client VM (with Windows 10 as the image/3-2 vcpus storage). Use the same 
 </p>
 <br />
 
+
+<h4>Set Domain Controller’s NIC Private IP address to be static</h4>
 <p>
 <img width="1440" alt="Screen Shot 2023-10-16 at 10 00 41 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/7ed56c09-c431-41ec-8f55-483a1c36dcaf">
 </p>
 <p>
-Set Domain Controller’s NIC Private IP address to be static. Go to DC-1 under virtual machines in Azure. Go to Network settings located on the left side-> Click DC-1's Network Interface-> Click IP configurations that is on the left side-> Scroll down and click ipconfig1-> Click static under Allocation-> Click Save 
+ Go to DC-1 under virtual machines in Azure. Go to Network settings located on the left side-> Click DC-1's Network Interface-> Click IP configurations that is on the left side-> Scroll down and click ipconfig1-> Click static under Allocation-> Click Save 
 </p>
 <br />
 
@@ -81,7 +83,7 @@ Set Domain Controller’s NIC Private IP address to be static. Go to DC-1 under 
 <li>Login to the Domain Controller and enable ICMPv4 in on the local windows Firewall (by typing in wf.msc on search engine next to the start button)</li>
 <li>Go to inbound rules</li>
 <li>Look for ICMPv4 Echo by clicking protocol to bring it in order based on protocol</li>
-<li>Then enable for two echo requests</li>
+<li>Then enable two echo requests</li>
 </ul>
 </p>
 <br />
@@ -106,7 +108,7 @@ Check back at Client-1 to see the ping succeed
 <li> Continue to click next and then install</li>
 <li> Click the Exclamation sign</li>
 <li>Promote as a DC: Setup a new forest as wilsiepm.com (can be anything, just remember what it is)</li>
-<li>Restart and then log back into DC-1 as user: wilsiepm.com\wlabuser</li>
+<li>Restart and then log back into DC-1 as user: wlabuser@wilsiepm.com</li>
 </ul>
 </p>
 <br />
@@ -120,12 +122,12 @@ Check back at Client-1 to see the ping succeed
 <li> Click the Exclamation sign</li>
 <li>Promote as a DC: Setup a new forest as wilsiepm.com (can be anything, just remember what it is)</li>
 <li> Create a password (you would not need to use during these steps) </li>
-<li>Restart and then log back into DC-1 as user: wilsiepm.com\wlabuser</li>
+<li>Restart and then log back into DC-1 as user: wlabuser@wilsiepm.com</li>
 </ul>
 </p>
 <br />
 
-<h3>Create an Admin and Normal User Account in AD</h3>
+<h3>Create Organizational Units and an Admin User Account in AD</h3>
 
 <p>
 <img width="1440" alt="Screen Shot 2023-10-17 at 12 43 48 AM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/173fe67b-8acf-46a1-84c5-d5febf263f94">
@@ -158,9 +160,9 @@ Check back at Client-1 to see the ping succeed
 </p>
 <p>
   <ul>
-<li>Add jane_admin to the “Domain Admins” Security Group</li>
+<li>Add mateo_admin to the “Domain Admins” Security Group</li>
 <li>Right click on mateo_admin->properties-> remote control->add-> types in domain admins-> Click Check Names-> Click OK->Click Apply-> Click OK</li>
-<li>Log out/close the Remote Desktop connection to DC-1 and log back in as “mydomain.com\jane_admin”</li>
+<li>Log out/close the Remote Desktop connection to DC-1 and log back in as “mateo_admin@wilsiepm.com”</li>
 <li>User mateo_admin as your admin account from now on</li>
   </ul>
 </p>
@@ -177,6 +179,112 @@ Check back at Client-1 to see the ping succeed
   </ul>
 </p>
 <br />
+<h3>Join Client-1 to your domain (mydomain.com)</h3>
+<p>
+<img width="1440" alt="Screen Shot 2023-10-17 at 3 26 18 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/ec65c9e2-942d-4824-a88f-9c4672088fe7">
+</p>
+<p>
+  <ul>
+<li>From the Azure Portal, set Client-1’s DNS settings to the DC’s Private IP address</li>
+  <ul>
+<li>Go to client-1</li>
+<li>Click Network settings on the left side</li>
+<li> CLick the name of the Network Interface</li>
+<li>On the left click DNS server</li>
+<li>Click custom and type in DC-1’s private IP Address (which is 10.0.0.4 in this case)-> click save</li>
+  </ul>
+<li>From the Azure Portal, restart Client-1</li>
+</ul>
+  </ul>
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+  <ul>
+<li>Login to Client-1 (Remote Desktop) as the original local admin (wlabuser) and join it to the domain (computer will restart)</li>
+<ul>
+<li>Right click the start menu-> Systems->rename this pc advance</li>
+<li>Go to change-> click domain-> type in domain name: wilsiepm.com</li>
+<li>Click ok and a another window will pop up to confirm the changes by using the admin login account to confirm the domain change</li>
+<li>Client-1 will automatically restart after confirming the domain changes if Client-1 was already logged in as previous account (wlabuser)</li>
+<li>Login using mateo_admin</li>
+</ul>
+  </ul>
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+</p>
+<br />
+
+
+<p>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+</p>
+<br />
+
+
+<p>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+</p>
+<br />
+
+
+<p>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+</p>
+<br />
+
+
+<p>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+</p>
+<br />
+
+
+<p>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+</p>
+<br />
+
 
 <p>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -201,3 +309,5 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 </p>
 <br />
+
+
