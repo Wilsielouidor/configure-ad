@@ -229,15 +229,18 @@ Check back at Client-1 to see the ping succeed
 <li>Right click the start menu-> Systems->rename this pc advance</li>
 <li>Go to change-> click domain-> type in domain name: wilsiepm.com</li>
 <li>Click ok and a another window will pop up to confirm the changes by using the admin login account to confirm the domain change</li>
-<li>Client-1 will automatically restart after confirming the domain changes if Client-1 was already logged in as previous account (wlabuser)</li>
-<li>Login using mateo_admin</li>
+<li>Client-1 will automatically restart after confirming the domain changes</li>
+<li>Login Client-1 using mateo_admin</li>
 </ul>
   </ul>
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="1440" alt="Screen Shot 2023-10-17 at 11 00 34 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/5c7d5506-2adb-4824-afda-94dd51eea534">
+</p>
+
+<p><img width="1431" alt="Screen Shot 2023-10-17 at 11 02 01 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/946bcd3d-c793-4768-9349-4632a5da1706">
 </p>
 <p>
  <ul>
@@ -250,91 +253,56 @@ Check back at Client-1 to see the ping succeed
  </ul>
 </p>
 <br />
-
+<h3>Create Additional Users and Attempt to log into Client-1 with one of the Users</h3>
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="1440" alt="Screen Shot 2023-10-17 at 11 06 50 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/62e97643-88b7-4dcd-b98c-fa9713574576">
 </p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+<br />
+
+<p><img width="1437" alt="Screen Shot 2023-10-17 at 11 09 28 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/88d927bc-cdc9-4f4b-8294-2907c4be2854">
+</p>
+<br />
+
+<p><img width="1432" alt="Screen Shot 2023-10-17 at 11 13 13 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/58b3fa53-994a-4c27-9f98-61c70f7e78ad">
 </p>
 <br />
 
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+ <ul>
+<li>Login to DC-1 as mateo_admin</li>
+<li>Open PowerShell_ise as an administrator </li>
+  <ul>
+<li>Type PowerShell_ise on search engine next to the start button</li>
+<li>Right click on Powershell_ise and click run as administrator</li>
+  </ul>
+<li>Create a new File and paste the contents of the <a href= "https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1"> script </a>into it.</li>
+  <img width="1275" alt="Screen Shot 2023-10-17 at 8 27 11 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/be9c6601-b39f-43ee-8d7c-da3f01e7f547">
+<li>Run the script and observe the accounts being created</li>
+
+ </ul>
 </p>
+<br />
+
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+ <img width="752" alt="Screen Shot 2023-10-17 at 10 06 17 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/07b88b2a-c2ed-421a-8c3c-aa5ed79b8ee4">
+ </p>
+<p>
+When finished, open ADUC and observe the accounts in the appropriate OU
 </p>
 <br />
 
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="1435" alt="Screen Shot 2023-10-17 at 11 20 20 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/9e384719-87f1-4ac8-a24a-723cc8609b3c">
 </p>
+
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Attempt to log into Client-1 with one of the accounts (take note of the password in the script which is "Password1" in this case)
 </p>
 <br />
 
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+END.
 </p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
