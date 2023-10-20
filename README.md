@@ -42,7 +42,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 </p>
 <p>
-First create a Virtual Machine that will be the Domain Controller. Name it DC-1 (with the image as Windows Server 2022/3-2 vcpus storage) Create a resource group while making virtual machine. Under Adminstrator account create a username and password that will remmember. 
+First create a Virtual Machine that will be the Domain Controller. Name it DC-1 (with the image as Windows Server 2022/3-2 vcpus storage) Create a resource group while making virtual machine. Under Adminstrator account create a username and password. 
 </p>
 <br />
 
