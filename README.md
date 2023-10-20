@@ -50,7 +50,7 @@ First create a Virtual Machine that will be the Domain Controller. Name it DC-1 
 <img width="780" alt="Screen Shot 2023-10-16 at 9 13 06 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/1e88049a-8af3-464e-a55c-a98636de11f6">
 </p>
 <p>
-This is the Vnet that has been automatically created while making the DC-1 Virtual Machine. Make sure that when Client-1 Virtual Machine is created has the same Vnet as DC-1
+This is the Vnet that has been automatically created while making the DC-1 Virtual Machine. Make sure that when Client-1 Virtual Machine is created it has the same Vnet as DC-1
 </p>
 <br />
 
@@ -59,7 +59,7 @@ This is the Vnet that has been automatically created while making the DC-1 Virtu
 <img width="1435" alt="Screen Shot 2023-10-16 at 9 47 18 PM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/0bd1498e-1ecd-494a-a3e0-0779dd164de8">
 </p>
 <p>
-Create Client VM (with Windows 10 as the image/3-2 vcpus storage). Use the same resource group and Vnet that was created from the first VM (DC-1) that was created. After the Client-1 has deployed then make sure to check if both VMs have the same vnet and are in the same region.
+Create Client VM (with Windows 10 as the image/3-2 vcpus storage). Use the same resource group and Vnet that was created from the first VM (DC-1) that was created. After the Client-1 has deployed double check if both VMs have the same vnet and are in the same region.
 </p>
 <br />
 
