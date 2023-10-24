@@ -298,8 +298,8 @@ When finished, open ADUC and observe the accounts in the appropriate OU
 Attempt to log into Client-1 with one of the accounts (take note of the password in the script which is "Password1" in this case)
 </p>
 <br />
-
-
-<p>
-END.
+<p><img width="1298" alt="Screen Shot 2023-10-24 at 12 03 57 AM" src="https://github.com/Wilsielouidor/configure-ad/assets/142513380/d92b51e7-1b23-418d-a8ab-96a1f86677c0">
 </p>
+<p>Success!</p>
+
+
